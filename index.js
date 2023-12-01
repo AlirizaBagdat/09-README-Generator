@@ -52,14 +52,14 @@ const questions = [  // <= Array of questions for user input
     },
 ];
 
- 
-function writeToFile(fileName, data) {    // <= Function to write README file
+ //Function to write README file
+function writeToFile(fileName, data) {    
     fs.writeFileSync(fileName, data, 'utf-8');
     console.log('File', `${fileName}`, 'has been created successfully!');
   }
   
-  
-  async function init() {    // <= Function to initialize app
+  // Function to initialize app
+  async function init() {    
     try {
       const answers = await inquirer.prompt(questions);
       const readmeContent = generateReadmeContent(answers);
@@ -73,29 +73,37 @@ function writeToFile(fileName, data) {    // <= Function to write README file
   function generateReadmeContent(data) {  // <= Function to generate README content based on user answers
 
     return `
-  # ${data.projectTitle}
-  
-  ## Description
-  ${data.description}
-  
-  ## Installation
-  ${data.installation}
-  
-  ## Usage
-  ${data.usage}
-  
-  ## Contributing
-  ${data.contributing}
-  
-  ## Tests
-  ${data.tests}
-  
-  ## License
-  This project is licensed under the ${data.license} License.
-  
-  ## Contact
-  GitHub: [${data.githubUsername}](https://github.com/${data.githubUsername})
-  Email: ${data.email}
+    # ${answers.projectTitle}
+
+    ## Description
+    ${answers.description}
+    
+    ## Table of Contents
+    - [Installation](#installation)
+    - [Usage](#usage)
+    - [License](#license)
+    - [Contributing](#contributing)
+    - [Tests](#tests)
+    - [Questions](#questions)
+    
+    ## Installation
+    ${answers.installation}
+    
+    ## Usage
+    ${answers.usage}
+    
+    ## License
+    This project is licensed under the ${answers.license} license.
+    
+    ## Contributing
+    ${answers.contributing}
+    
+    ## Tests
+    ${answers.tests}
+    
+    ## Questions
+    For additional questions, please contact ${answers.email}.
+    GitHub: [${answers.githubUsername}](https://github.com/${answers.githubUsername})
   `;
   }
   
