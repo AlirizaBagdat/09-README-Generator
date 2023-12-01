@@ -1,6 +1,6 @@
 const inquirer = require('inquirer');   // <= Packages required
 const fs = require('fs');
-const path = require('path');
+
     
 const questions = [  // <= Array of questions for user input
 
@@ -70,7 +70,7 @@ function writeToFile(fileName, data) {
   }
   
   //Function to generate README content based on user answers
-  function generateReadmeContent(data) {  
+  function generateReadmeContent(answers) {  
     return `
     # ${answers.projectTitle}
 
