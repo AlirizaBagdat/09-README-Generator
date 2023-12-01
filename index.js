@@ -69,9 +69,8 @@ function writeToFile(fileName, data) {
     }
   }
   
-  
-  function generateReadmeContent(data) {  // <= Function to generate README content based on user answers
-
+  //Function to generate README content based on user answers
+  function generateReadmeContent(data) {  
     return `
     # ${answers.projectTitle}
 
